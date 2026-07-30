@@ -397,14 +397,17 @@ function Home() {
         <div className="orb -bottom-24 left-1/2 size-[24rem] -translate-x-1/2 bg-[var(--sky)] opacity-20" />
         <div className="relative mx-auto max-w-7xl px-4">
           <div className="flex flex-col items-center gap-6 text-center">
-            <img
-              src={logo.url}
-              alt="Eli.Vate Cleaning Solutions"
-              loading="lazy"
-              width={220}
-              height={55}
-              className="h-12 w-auto invert mix-blend-screen"
-            />
+            <div className="rounded-2xl bg-[color-mix(in_oklab,white_94%,transparent)] px-4 py-2 shadow-[var(--shadow-glow)]">
+              <img
+                src={logo.url}
+                alt="Eli.Vate Cleaning Solutions"
+                loading="lazy"
+                width={220}
+                height={55}
+                className="h-12 w-auto mix-blend-multiply"
+              />
+            </div>
+
             <p className="max-w-lg text-sm text-primary-foreground/55">
               Building a lasting legacy through meticulous attention to care. Residential and
               commercial cleaning across London, United Kingdom.
