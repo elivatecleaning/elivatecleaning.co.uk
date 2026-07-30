@@ -403,7 +403,7 @@ function Home() {
               loading="lazy"
               width={220}
               height={55}
-              className="h-12 w-auto brightness-0 invert"
+              className="h-12 w-auto invert mix-blend-screen"
             />
             <p className="max-w-lg text-sm text-primary-foreground/55">
               Building a lasting legacy through meticulous attention to care. Residential and

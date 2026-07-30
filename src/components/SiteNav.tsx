@@ -44,7 +44,7 @@ export function SiteNav() {
               height={40}
               className={cn(
                 "h-9 w-auto transition-all duration-500",
-                scrolled ? "mix-blend-multiply" : "brightness-0 invert",
+                scrolled ? "mix-blend-multiply" : "invert mix-blend-screen",
               )}
 
             />
