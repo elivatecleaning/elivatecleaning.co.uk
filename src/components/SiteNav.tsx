@@ -42,7 +42,11 @@ export function SiteNav() {
               alt="Eli.Vate Cleaning Solutions"
               width={160}
               height={40}
-              className="h-9 w-auto mix-blend-multiply"
+              className={cn(
+                "h-9 w-auto transition-all duration-500",
+                scrolled ? "mix-blend-multiply" : "brightness-0 invert",
+              )}
+
             />
           </a>
 
