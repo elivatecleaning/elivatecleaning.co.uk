@@ -36,20 +36,23 @@ export function BeforeAfter() {
         height={800}
         className="absolute inset-0 size-full object-cover"
       />
-      <div className="absolute inset-0 overflow-hidden" style={{ width: `${pos}%` }}>
+      <div
+        className="absolute inset-0"
+        style={{ clipPath: `inset(0 ${100 - pos}% 0 0)` }}
+      >
         <img
           src={before}
           alt="Stained carpet before cleaning"
           loading="lazy"
           width={1200}
           height={800}
-          className="absolute inset-0 h-full object-cover"
-          style={{ width: ref.current?.clientWidth ?? "100%", maxWidth: "none" }}
+          className="absolute inset-0 size-full object-cover"
         />
         <span className="absolute top-4 left-4 rounded-full bg-[color-mix(in_oklab,var(--navy-deep)_75%,transparent)] px-3 py-1 text-xs font-semibold tracking-widest text-primary-foreground uppercase backdrop-blur">
           Before
         </span>
       </div>
+
       <span className="absolute top-4 right-4 rounded-full bg-[color-mix(in_oklab,var(--sky)_85%,transparent)] px-3 py-1 text-xs font-semibold tracking-widest text-accent-foreground uppercase backdrop-blur">
         After
       </span>
