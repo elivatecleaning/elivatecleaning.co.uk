@@ -6,7 +6,7 @@ import { Send } from "lucide-react";
 const schema = z.object({
   name: z.string().trim().min(2, "Please enter your name").max(100),
   phone: z.string().trim().min(7, "Please enter a valid phone number").max(30),
-  email: z.string().trim().email("Please enter a valid email").max(255),
+  replyto: z.string().trim().email("Please enter a valid email").max(255),
   service: z.string().trim().min(1, "Please choose a service"),
   message: z.string().trim().max(1000).optional(),
 });
