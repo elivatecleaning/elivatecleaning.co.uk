@@ -31,7 +31,7 @@ export function BookingForm() {
   return (
     <form
       className="grid gap-4 sm:grid-cols-2"
-      onSubmit={(e) => {
+      onSubmit={async (e) => {
         e.preventDefault();
         const fd = new FormData(e.currentTarget);
         const parsed = schema.safeParse(Object.fromEntries(fd));
@@ -40,13 +40,28 @@ export function BookingForm() {
           return;
         }
         setSending(true);
-        setTimeout(() => {
+        try {
+          const response = await fetch("https://api.web3forms.com/submit", {
+            method: "POST",
+            body: fd,
+          });
+          const result = await response.json();
+          if (response.ok && result.success) {
+            toast.success("Request received — we'll confirm your slot within the hour.");
+            (e.target as HTMLFormElement).reset();
+          } else {
+            toast.error(result.message || "Submission failed. Please try again.");
+          }
+        } catch {
+          toast.error("Something went wrong. Please check your connection and try again.");
+        } finally {
           setSending(false);
-          toast.success("Request received — we'll confirm your slot within the hour.");
-          (e.target as HTMLFormElement).reset();
-        }, 700);
+        }
       }}
     >
+      <input type="hidden" name="access_key" value="f5bd7edf-6aec-4e30-960d-8733f95cc264" />
+      <input type="hidden" name="email" value="hello@elivatecleaning.co.uk" />
+      <input type="hidden" name="subject" value="New Eli.Vate Cleaning enquiry" />
       <div>
         <label htmlFor="name" className="mb-1.5 block text-xs font-medium tracking-wide text-primary-foreground/70 uppercase">
           Name
