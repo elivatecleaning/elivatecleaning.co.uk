@@ -81,7 +81,7 @@ export function BookingForm() {
         <label htmlFor="email" className="mb-1.5 block text-xs font-medium tracking-wide text-primary-foreground/70 uppercase">
           Email
         </label>
-        <input id="email" name="replyto" type="email" maxLength={255} className={field} placeholder="you@email.com" />
+        <input id="email" name="email" type="email" maxLength={255} className={field} placeholder="you@email.com" />
       </div>
       <div>
         <label htmlFor="service" className="mb-1.5 block text-xs font-medium tracking-wide text-primary-foreground/70 uppercase">
