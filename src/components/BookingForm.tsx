@@ -61,8 +61,10 @@ export function BookingForm() {
       }}
     >
       <input type="hidden" name="access_key" value="f5bd7edf-6aec-4e30-960d-8733f95cc264" />
-      <input type="hidden" name="email" value="hello@elivatecleaning.co.uk" />
       <input type="hidden" name="subject" value="New Eli.Vate Cleaning enquiry" />
+      <input type="hidden" name="from_name" value="Eli.Vate Cleaning Website" />
+      <input type="checkbox" name="botcheck" className="hidden" style={{ display: "none" }} tabIndex={-1} aria-hidden="true" />
+
       <div>
         <label htmlFor="name" className="mb-1.5 block text-xs font-medium tracking-wide text-primary-foreground/70 uppercase">
           Name
