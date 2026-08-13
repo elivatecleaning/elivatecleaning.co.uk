@@ -6,7 +6,7 @@ import { Send } from "lucide-react";
 const schema = z.object({
   name: z.string().trim().min(2, "Please enter your name").max(100),
   phone: z.string().trim().min(7, "Please enter a valid phone number").max(30),
-  email: z.string().trim().email("Please enter a valid email").max(255),
+  replyto: z.string().trim().email("Please enter a valid email").max(255),
   service: z.string().trim().min(1, "Please choose a service"),
   message: z.string().trim().max(1000).optional(),
 });
@@ -31,7 +31,7 @@ export function BookingForm() {
   return (
     <form
       className="grid gap-4 sm:grid-cols-2"
-      onSubmit={(e) => {
+      onSubmit={async (e) => {
         e.preventDefault();
         const fd = new FormData(e.currentTarget);
         const parsed = schema.safeParse(Object.fromEntries(fd));
@@ -40,13 +40,28 @@ export function BookingForm() {
           return;
         }
         setSending(true);
-        setTimeout(() => {
+        try {
+          const response = await fetch("https://api.web3forms.com/submit", {
+            method: "POST",
+            body: fd,
+          });
+          const result = await response.json();
+          if (response.ok && result.success) {
+            toast.success("Request received — we'll confirm your slot within the hour.");
+            (e.target as HTMLFormElement).reset();
+          } else {
+            toast.error(result.message || "Submission failed. Please try again.");
+          }
+        } catch {
+          toast.error("Something went wrong. Please check your connection and try again.");
+        } finally {
           setSending(false);
-          toast.success("Request received — we'll confirm your slot within the hour.");
-          (e.target as HTMLFormElement).reset();
-        }, 700);
+        }
       }}
     >
+      <input type="hidden" name="access_key" value="f5bd7edf-6aec-4e30-960d-8733f95cc264" />
+      <input type="hidden" name="email" value="hello@elivatecleaning.co.uk" />
+      <input type="hidden" name="subject" value="New Eli.Vate Cleaning enquiry" />
       <div>
         <label htmlFor="name" className="mb-1.5 block text-xs font-medium tracking-wide text-primary-foreground/70 uppercase">
           Name
@@ -63,7 +78,7 @@ export function BookingForm() {
         <label htmlFor="email" className="mb-1.5 block text-xs font-medium tracking-wide text-primary-foreground/70 uppercase">
           Email
         </label>
-        <input id="email" name="email" type="email" maxLength={255} className={field} placeholder="you@email.com" />
+        <input id="email" name="replyto" type="email" maxLength={255} className={field} placeholder="you@email.com" />
       </div>
       <div>
         <label htmlFor="service" className="mb-1.5 block text-xs font-medium tracking-wide text-primary-foreground/70 uppercase">
