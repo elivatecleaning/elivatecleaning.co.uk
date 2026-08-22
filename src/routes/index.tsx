@@ -367,7 +367,7 @@ function Home() {
             <Reveal delay={120}>
               <ul className="mt-10 space-y-3">
                 {[
-                  { icon: Phone, label: "Phone", value: "020 8000 0000" },
+                  { icon: Phone, label: "Phone", value: "07858 228076" },
                   { icon: Mail, label: "Email", value: "hello@elivatecleaning.co.uk" },
                   { icon: MapPin, label: "Service area", value: "Greater London & M25, United Kingdom" },
                   { icon: Clock, label: "Business hours", value: "Mon–Sat 7am–8pm · Sun 9am–5pm" },
