@@ -67,14 +67,14 @@ export function SiteNav() {
 
           <div className="flex items-center gap-2">
             <a
-              href="tel:+442080000000"
+              href="tel:+447858228076"
               className={cn(
                 "hidden items-center gap-2 text-sm font-medium sm:flex",
                 scrolled ? "text-foreground/75" : "text-primary-foreground/85",
               )}
             >
               <Phone className="size-4" />
-              020 8000 0000
+              07858 228076
             </a>
             <a
               href="#book"
